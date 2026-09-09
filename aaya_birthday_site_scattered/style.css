@@ -1,0 +1,1116 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #f8f7fb;
+  --ink: #282932;
+  --paper: rgba(250, 249, 251, 0.9);
+  --paper-strong: rgba(252, 251, 253, 0.96);
+  --accent: #596482;
+  --shadow: rgba(19, 25, 44, 0.26);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.025em;
+
+  color: var(--text);
+
+  background:
+    linear-gradient(
+      rgba(18, 27, 52, 0.16),
+      rgba(26, 26, 43, 0.28)
+    ),
+    url("images/sky-background.jpeg")
+    center center / cover fixed no-repeat;
+}
+
+/* =========================
+   BACKGROUND
+   ========================= */
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(15, 23, 45, 0.15),
+      rgba(33, 31, 48, 0.26)
+    ),
+    radial-gradient(
+      circle at 50% 30%,
+      transparent 0 30%,
+      rgba(13, 18, 35, 0.18) 100%
+    );
+}
+
+.site {
+  position: relative;
+}
+
+.hero,
+.letter-zone,
+.chat-memory {
+  position: relative;
+  isolation: isolate;
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero {
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 11vh 8vw 14vh;
+}
+
+.hero-copy {
+  width: min(700px, 78vw);
+
+  position: relative;
+  z-index: 10;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 25px rgba(11, 17, 35, 0.34);
+}
+
+.eyebrow {
+  margin: 0 0 1.2rem;
+
+  font-size: 0.74rem;
+  font-weight: 500;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  opacity: 0.78;
+}
+
+h1,
+h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.055em;
+}
+
+h1 {
+  margin: 0 0 1.6rem;
+
+  font-size: clamp(3.2rem, 7vw, 6.2rem);
+  line-height: 0.92;
+  font-weight: 600;
+}
+
+.opening,
+.letter p,
+.signature,
+.scroll-cue,
+.chat-caption {
+  font-size: clamp(1rem, 1.45vw, 1.12rem);
+  line-height: 1.58;
+  letter-spacing: -0.025em;
+}
+
+.opening {
+  max-width: 610px;
+  margin: 0 auto;
+}
+
+.scroll-cue {
+  margin-top: 2.8rem;
+
+  padding: 0.65rem 0.9rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+
+  color: inherit;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  cursor: none;
+}
+
+
+/* =========================
+   LETTER
+   ========================= */
+
+.letter-zone {
+  min-height: 2050px;
+
+  padding:
+    24vh
+    7vw
+    26vh;
+}
+
+.letter {
+  width: min(700px, 82vw);
+
+  margin: 0 auto;
+
+  padding:
+    clamp(2rem, 5vw, 4.8rem);
+
+  position: relative;
+  z-index: 12;
+
+  color: var(--ink);
+
+  background: var(--paper);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow:
+    0 28px 90px rgba(15, 21, 40, 0.22);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.letter p {
+  margin:
+    0
+    0
+    1.55rem;
+}
+
+.pendrive-line {
+  position: relative;
+
+  margin:
+    1.55rem
+    0;
+}
+
+.pendrive-line p {
+  margin: 0;
+}
+
+.signature {
+  margin-top: 2.7rem;
+
+  text-align: right;
+}
+
+.signature span,
+.signature strong {
+  display: block;
+}
+
+.signature strong {
+  margin-top: 0.15rem;
+
+  font-size: inherit;
+  font-weight: 600;
+}
+
+
+/* =========================
+   SCATTERED POLAROIDS
+   ========================= */
+
+.scatter-photo {
+  --r: 0deg;
+
+  position: absolute;
+
+  z-index: 5;
+
+  margin: 0;
+
+  width:
+    clamp(125px, 14vw, 205px);
+
+  transform:
+    rotate(var(--r));
+
+  filter:
+    drop-shadow(
+      0 16px 22px
+      rgba(15, 20, 38, 0.26)
+    );
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+
+  cursor: none;
+}
+
+.scatter-photo:hover {
+  z-index: 30;
+
+  transform:
+    rotate(0deg)
+    translateY(-6px)
+    scale(1.025);
+
+  filter:
+    drop-shadow(
+      0 24px 32px
+      rgba(15, 20, 38, 0.34)
+    );
+}
+
+.photo-frame {
+  position: relative;
+
+  min-height: 125px;
+
+  padding:
+    8px
+    8px
+    20px;
+
+  background: #fbfaf8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+}
+
+.photo-frame img {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  height: auto;
+
+  margin: 0;
+
+  cursor: none;
+}
+
+
+/* =========================
+   PHOTO POSITIONS
+   ========================= */
+
+/* Hero */
+
+.sp01 {
+  left: 4vw;
+  top: 10vh;
+  --r: -7deg;
+
+  width:
+    clamp(120px, 13vw, 185px);
+}
+
+.sp02 {
+  right: 6vw;
+  top: 12vh;
+  --r: 6deg;
+
+  width:
+    clamp(125px, 14vw, 200px);
+}
+
+.sp03 {
+  left: 10vw;
+  bottom: 8vh;
+  --r: 4deg;
+
+  width:
+    clamp(115px, 12vw, 170px);
+}
+
+.sp04 {
+  right: 13vw;
+  bottom: 5vh;
+  --r: -5deg;
+
+  width:
+    clamp(130px, 14vw, 205px);
+}
+
+.sp05 {
+  left: 2vw;
+  top: 49%;
+  --r: 8deg;
+
+  width:
+    clamp(105px, 11vw, 155px);
+}
+
+
+/* Letter */
+
+.sp06 {
+  left: 3vw;
+  top: 7%;
+  --r: -5deg;
+}
+
+.sp07 {
+  right: 3vw;
+  top: 12%;
+  --r: 7deg;
+
+  width:
+    clamp(140px, 15vw, 220px);
+}
+
+.sp08 {
+  left: 7vw;
+  top: 30%;
+  --r: 4deg;
+
+  width:
+    clamp(110px, 12vw, 170px);
+}
+
+.sp09 {
+  right: 5vw;
+  top: 35%;
+  --r: -7deg;
+
+  width:
+    clamp(120px, 13vw, 190px);
+}
+
+.sp10 {
+  left: 2vw;
+  top: 51%;
+  --r: -2deg;
+
+  width:
+    clamp(145px, 15vw, 225px);
+}
+
+.sp11 {
+  right: 4vw;
+  top: 57%;
+  --r: 5deg;
+}
+
+.sp12 {
+  left: 8vw;
+  top: 72%;
+  --r: -8deg;
+
+  width:
+    clamp(120px, 13vw, 180px);
+}
+
+.sp13 {
+  right: 7vw;
+  top: 76%;
+  --r: 3deg;
+
+  width:
+    clamp(145px, 15vw, 220px);
+}
+
+.sp14 {
+  left: 3vw;
+  bottom: 3%;
+  --r: 6deg;
+
+  width:
+    clamp(130px, 14vw, 205px);
+}
+
+
+/* =========================
+   PENDRIVE IMAGE
+   ========================= */
+
+.usb-photo {
+  position: absolute;
+
+  z-index: 15;
+
+  right:
+    max(
+      4vw,
+      calc(50% - 475px)
+    );
+
+  top: 43%;
+
+  width:
+    clamp(80px, 9vw, 135px);
+
+  margin: 0;
+
+  transform:
+    rotate(8deg);
+
+  filter:
+    drop-shadow(
+      0 12px 18px
+      rgba(15, 20, 38, 0.28)
+    );
+}
+
+.usb-photo img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+
+/* =========================
+   CHAT MEMORY ENDING
+   ========================= */
+
+.chat-memory {
+  min-height: 100svh;
+
+  padding:
+    14vh
+    6vw;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+}
+
+.chat-memory-inner {
+  width:
+    min(620px, 88vw);
+
+  text-align: center;
+}
+
+.chat-caption {
+  margin:
+    0
+    0
+    2rem;
+
+  font-weight: 500;
+
+  color: #fff;
+
+  text-shadow:
+    0 2px 20px
+    rgba(0, 0, 0, 0.35);
+}
+
+.chat-screenshot-frame {
+  display: inline-block;
+
+  max-width: 100%;
+
+  padding: 10px;
+
+  border: 0;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 24px 60px
+    rgba(15, 20, 38, 0.28);
+
+  transform:
+    rotate(-1.5deg);
+
+  cursor: none;
+}
+
+.chat-screenshot-frame img {
+  display: block;
+
+  max-width: 100%;
+
+  width: auto;
+  height: auto;
+}
+
+
+/* =========================
+   BACK TO TOP
+   ========================= */
+
+.back-top {
+  display: block;
+
+  width: max-content;
+
+  margin:
+    0
+    auto
+    2rem;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 0.85rem;
+
+  opacity: 0.7;
+
+  cursor: none;
+}
+
+
+/* =========================
+   CUSTOM FACE CURSOR
+   ========================= */
+
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 72px;
+
+  z-index: 99999;
+
+  pointer-events: none;
+
+  transform:
+    translate(-18%, -18%);
+
+  filter:
+    drop-shadow(
+      0 5px 8px
+      rgba(0, 0, 0, 0.18)
+    );
+
+  transition:
+    width 0.12s ease,
+    opacity 0.12s ease;
+}
+
+.custom-cursor img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+body:has(a:hover) .custom-cursor,
+body:has(button:hover) .custom-cursor,
+body:has(.scatter-photo:hover) .custom-cursor {
+  width: 85px;
+}
+
+
+/* =========================
+   LIGHTBOX
+   ========================= */
+
+.lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 200000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    5vh
+    5vw;
+
+  background:
+    rgba(8, 10, 18, 0.82);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  max-width: 92vw;
+  max-height: 90vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content img {
+  display: block;
+
+  max-width: 92vw;
+  max-height: 88vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.45);
+
+  transform:
+    scale(0.96);
+
+  transition:
+    transform 0.22s ease;
+}
+
+.lightbox.open
+.lightbox-content img {
+  transform:
+    scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+
+  top: 22px;
+  right: 28px;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  color: white;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 28px;
+  line-height: 1;
+
+  display: grid;
+  place-items: center;
+
+  cursor: none;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+
+/* =========================
+   MOTION
+   ========================= */
+
+.reveal {
+  opacity: 0;
+
+  transform:
+    translateY(24px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 1050px) {
+
+  .letter-zone {
+    min-height: 2250px;
+  }
+
+  .letter {
+    width:
+      min(660px, 76vw);
+  }
+
+  .scatter-photo {
+    width:
+      clamp(105px, 15vw, 165px);
+  }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 760px) {
+
+  body {
+    background-attachment: scroll;
+  }
+
+  .hero {
+    min-height: 1050px;
+
+    padding:
+      17vh
+      6vw
+      14vh;
+
+    align-items: center;
+  }
+
+  .hero-copy {
+    width:
+      min(86vw, 570px);
+  }
+
+  h1 {
+    font-size:
+      clamp(3rem, 14vw, 4.7rem);
+  }
+
+  .letter-zone {
+    min-height: 2850px;
+
+    padding:
+      24vh
+      4vw
+      25vh;
+  }
+
+  .letter {
+    width: 88vw;
+
+    padding:
+      2rem
+      1.7rem;
+  }
+
+  .scatter-photo {
+    width:
+      clamp(95px, 26vw, 135px);
+  }
+
+  .sp06,
+  .sp08,
+  .sp10,
+  .sp12,
+  .sp14 {
+    left: -2vw;
+  }
+
+  .sp07,
+  .sp09,
+  .sp11,
+  .sp13 {
+    right: -2vw;
+  }
+
+  .usb-photo {
+    width: 85px;
+
+    right: 2vw;
+    top: 42%;
+  }
+
+  .chat-memory {
+    min-height: 100svh;
+
+    padding:
+      12vh
+      5vw;
+  }
+
+  .chat-memory-inner {
+    width: 90vw;
+  }
+
+  .chat-screenshot-frame {
+    width: 100%;
+
+    padding: 8px;
+  }
+
+  .chat-screenshot-frame img {
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   SMALL PHONES
+   ========================= */
+
+@media (max-width: 480px) {
+
+  .hero {
+    min-height: 1180px;
+  }
+
+  .letter-zone {
+    min-height: 3200px;
+  }
+
+  .letter {
+    width: 92vw;
+  }
+
+  .scatter-photo {
+    width:
+      clamp(88px, 28vw, 120px);
+  }
+
+  .sp05 {
+    top: 62%;
+  }
+
+  .usb-photo {
+    top: 44%;
+  }
+
+  .chat-caption {
+    font-size: 1rem;
+  }
+}
+
+
+/* =========================
+   TOUCH DEVICES
+   ========================= */
+
+@media (hover: none), (pointer: coarse) {
+
+  body,
+  .scatter-photo,
+  .scatter-photo img,
+  .chat-screenshot-frame,
+  .lightbox-close,
+  .back-top,
+  .scroll-cue {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================
+   BIRTHDAY COUNTDOWN
+   ========================= */
+
+.hidden {
+  display: none !important;
+}
+
+.countdown-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 2rem;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      rgba(18, 27, 52, 0.18),
+      rgba(26, 26, 43, 0.32)
+    ),
+    url("images/sky-background.jpeg")
+    center center / cover no-repeat;
+}
+
+.countdown-card {
+  width: min(620px, 92vw);
+
+  text-align: center;
+
+  padding: clamp(2rem, 6vw, 4rem);
+
+  background: rgba(20, 25, 43, 0.34);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 30px 90px rgba(10, 14, 30, 0.25);
+}
+
+.countdown-small {
+  margin: 0 0 1rem;
+
+  font-size: 0.8rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+
+  opacity: 0.75;
+}
+
+.countdown-card h1 {
+  margin: 0 0 2.5rem;
+
+  font-size: clamp(2.4rem, 8vw, 5rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+}
+
+.countdown {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 0.7rem;
+}
+
+.countdown div {
+  padding:
+    1rem
+    0.4rem;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.14);
+}
+
+.countdown span {
+  display: block;
+
+  font-size:
+    clamp(1.7rem, 6vw, 3rem);
+
+  font-weight: 600;
+
+  letter-spacing: -0.05em;
+}
+
+.countdown small {
+  display: block;
+
+  margin-top: 0.3rem;
+
+  font-size: 0.7rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.04em;
+
+  opacity: 0.65;
+}
+
+.countdown-note {
+  margin:
+    2rem
+    0
+    0;
+
+  font-size: 0.9rem;
+
+  opacity: 0.72;
+}
+
+@media (max-width: 520px) {
+
+  .countdown-card {
+    padding:
+      2.2rem
+      1.25rem;
+  }
+
+  .countdown {
+    gap: 0.4rem;
+  }
+
+  .countdown div {
+    padding:
+      0.8rem
+      0.2rem;
+  }
+
+  .countdown small {
+    font-size: 0.58rem;
+  }
+}
